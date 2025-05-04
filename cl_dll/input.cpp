@@ -181,13 +181,13 @@ namespace autofuncs
 
  		s_duck_was_down_last_frame = ((cmd->buttons & IN_DUCK) != 0);
  	}
- }
+}
 
- extern "C" void update_player_info(int onground, int inwater, int walking)
- {
- 	autofuncs::player.onground = (onground != 0);
- 	autofuncs::player.inwater = (inwater != 0);
- 	autofuncs::player.walking = (walking != 0);
+void update_player_info(int onground, int inwater, int walking)
+{
+    autofuncs::player.onground = (onground != 0);
+    autofuncs::player.inwater = (inwater != 0);
+    autofuncs::player.walking = (walking != 0);
 }
 
 /*
