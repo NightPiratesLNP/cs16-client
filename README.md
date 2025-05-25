@@ -2,7 +2,7 @@
 Counter-Strike reverse-engineered.
 
 ## Donate
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/velaron)
+[![donate nigga](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/velaron)
 
 [Support](https://www.buymeacoffee.com/velaron) me on Buy Me A Coffee, if you like my work and would like to support further development goals, like  reverse-engineering other great mods.
 
