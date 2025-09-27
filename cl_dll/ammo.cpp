@@ -285,7 +285,7 @@ int CHudAmmo::Init(void)
 	m_pClDynamicCrosshair = CVAR_CREATE("cl_dynamiccrosshair", "1", FCVAR_ARCHIVE);
 
 	m_hStaticSpr = 0;
-
+	hud_weapon = CVAR_CREATE( "hud_weapon", 0, FCVAR_ARCHIVE );
 	m_iFlags = HUD_DRAW | HUD_THINK; //!!!
 	m_R = 50;
 	m_G = 250;
@@ -1071,6 +1071,24 @@ int CHudAmmo::Draw(float flTime)
 
 	// Does this weapon have a clip?
 	y = ScreenHeight - gHUD.m_iFontHeight - gHUD.m_iFontHeight/2;
+
+	if ( hud_weapon->value != 0.0f )
+	{
+		int r, g, b;
+		if ( gWR.HasAmmo( m_pWeapon ) )
+		{
+			DrawUtils::UnpackRGB( r, g, b, gHUD.m_iDefaultHUDColor );
+			DrawUtils::ScaleColors( r, g, b, 192 );
+		}
+		else
+		{
+			DrawUtils::UnpackRGB( r, g, b, RGB_REDISH );
+			DrawUtils::ScaleColors( r, g, b, 128 );
+		}
+		SPR_Set( m_pWeapon->hInactive, r, g, b );
+		int offset = ( m_pWeapon->rcInactive.bottom - m_pWeapon->rcInactive.top ) / 8;
+		SPR_DrawAdditive( 0, ScreenWidth / 1.73, y - offset, &m_pWeapon->rcInactive );
+	}
 
 	// Does weapon have any ammo at all?
 	if (m_pWeapon->iAmmoType > 0)
@@ -2095,4 +2113,3 @@ void CHudAmmo::HideCrosshair()
 {
 	m_hStaticSpr = 0;
 }
-
